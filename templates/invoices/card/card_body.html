@@ -1,0 +1,19 @@
+{% load static %}
+<div class="text-left">
+    {% if invoice.invoice_date %}
+        <h6 class="mb-1">Rechnungsdatum</h6>
+        <p class="mb-1">{{ invoice.invoice_date }}</p>
+    {% endif %}
+    {% if invoice.invoice_amount %}
+        <h6 class="mb-1">Betrag:</h6>
+        <p class="mb-1">{{ invoice.invoice_amount }} €</p>
+    {% endif %}
+    {% if invoice.paid_date != None %}
+        <h6 class="mb-1">Bezahlt am:</h6>
+        <p class="mb-1">{{ invoice.paid_date }}</p>
+    {% endif %}
+    {% if invoice.submission != None %}
+        <h6 class="mb-1">Anfrage für:</h6>
+        <p class="mb-1">{{ invoice.submission }}</p>
+    {% endif %}
+</div>

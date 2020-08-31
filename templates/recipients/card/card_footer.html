@@ -1,0 +1,40 @@
+{% if recipient.id in recipientfavorit or recipient.user.id == user.id%}
+<div class="btn-group">
+    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Rechnungen
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'invoices:invoice_add' recipient=recipient.id %}">Neue erstellen</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Ansehen</h6>
+        <a class="dropdown-item" href="{% url 'invoices:invoice_index_doctor' recipient=recipient.id %}">Alle Rechnungen</a>
+        <a class="dropdown-item" href="#">Offene Rechnungen</a>
+        <a class="dropdown-item" href="#">Bezahlte Rechnungen</a>
+    </div>
+</div>
+{% else %}
+    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_{{ recipient.pk }}">
+      Rechnung erstellen
+    </button>
+    <div class="modal fade" id="modal_{{ recipient.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+                Fehler: Träger noch nicht in Liste
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Wenn Sie eine Rechnung von dem Träger "{{ recipient.name }}" erstellen wollen, müssen Sie ihn zu Ihrer Liste hinzufügen.
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-info" href="{% url 'recipients:doctor_user_favorit' recipient=recipient.pk %}" role="button">Zur Liste hinzufügen</a>
+            <button role="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}

@@ -1,0 +1,14 @@
+{% load static %}
+<div class="p-2 bd-highlight">
+    <div class="card text-center shadow-sm mb-2 bg-white rounded">
+        <div class="card-header">
+            {% include 'recipients/card/card_header.html' %}
+        </div>
+        <div class="card-body">
+            {%  include 'recipients/card/card_body.html' %}
+        </div>
+        <div class="card-footer text-muted">
+            {% include 'recipients/card/card_footer.html' %}
+        </div>
+    </div>
+</div>

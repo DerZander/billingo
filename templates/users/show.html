@@ -1,0 +1,72 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+{% include 'users/navbar.html' %}
+{% endblock%}
+{% block content%}
+<form method="POST">{% csrf_token %}
+{% if edit == False %}
+    <fieldset disabled>
+{% endif %}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Vorname</span>
+        </div>
+        <input type="text" style="background: white" class="form-control" value="{{form.first_name}}" aria-describedby="basic-addon2">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Nachname</span>
+        </div>
+        <input type="text" style="background: white" class="form-control"  value="{{form.last_name}}" aria-describedby="basic-addon2">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Geburtstag</span>
+        </div>
+        <input type="text" style="background: white" class="form-control" value="{{form.birthday}}" aria-describedby="basic-addon2">
+
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+        </div>
+            <input type="text" style="background: white" class="form-control" value="{{form.email}}" aria-describedby="basic-addon2">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Straße</span>
+        </div>
+        <input type="text" style="background: white" class="form-control"  value="{{form.street}}" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Hausnummer</span>
+        </div>
+        <input type="text" style="background: white" class="form-control" value="{{form.housenumber}}" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">PLZ</span>
+        </div>
+        <input type="text" style="background: white" class="form-control"  value="{{form.postcode}}" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Ort</span>
+        </div>
+        <input type="text" style="background: white" class="form-control"  value="{{form.city}}" aria-describedby="basic-addon2">
+    </div>
+{% if edit %}
+    <div class="login-div-button">
+        <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+{% else %}
+    </fieldset>
+{% endif %}
+
+</form>
+{% endblock %}

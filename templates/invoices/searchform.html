@@ -1,0 +1,16 @@
+{% load static %}
+<form class="form-inline">
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Rechnungsdaten: </label>
+    {{ searchform.invoice_data }}
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Arzt: </label>
+    {{ searchform.invoice_doctor }}
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Monat: </label>
+    {{ searchform.month }}
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Monat: </label>
+    {{ search_month }}
+    <div class="custom-control custom-switch mr-sm-2 ">
+        {{ searchform.paid }}
+        <label class="custom-control-label" for="customSwitch1" title="Auch die, die schon bezahlt worden">Alle Anzeigen</label>
+    </div>
+    <button type="submit" class="btn btn-info my-1"><img src="{% static 'icons/search-white.svg' %}"></button>
+</form>

@@ -1,0 +1,13 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block title %}
+    {{navtitle}}
+{% endblock %}
+{% block content %}
+    {% if not tasks.tutorial %}
+        {% include 'organisations/tutorial.html' %}
+    {% endif %}
+    {% include 'organisations/overview.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block addbutton %}
+    <a class="" href="{% url 'recipients:doctor_create' %}" title="Träger hinzufügen"><img src="{% static 'icons/add_full_circle.svg' %}"></a>
+{% endblock %}
+{% block searchform %}
+    {% include 'recipients/searchform.html' %}
+{% endblock %}
+{% block content%}
+    <div class="d-flex flex-row bd-highlight mb-3 flex-wrap">
+        {% for recipient in recipients %}
+            {% include 'recipients/card/card.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}

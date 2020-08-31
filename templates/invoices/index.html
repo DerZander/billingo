@@ -1,0 +1,20 @@
+{% extends 'main/index.html' %}
+{% load static %}
+
+{% block title %}
+{{navtitle}}
+{% endblock %}
+{% block addbutton %}
+<a class="" href="{% url 'invoices:invoice_create'%}" title="Arzt hinzufügen"><img src="{% static 'icons/add_full_circle.svg' %}"></a>
+{% endblock %}
+{% block searchform %}
+    {% include 'invoices/searchform.html' %}
+{% endblock %}
+
+{% block content%}
+    <div class="d-flex flex-row bd-highlight mb-3 flex-wrap">
+        {% for invoice in invoices %}
+            {% include 'invoices/card/card.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}

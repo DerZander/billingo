@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/billingo.iml" filepath="$PROJECT_DIR$/.idea/billingo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../firefighterbook/.idea/firefighterbook.iml" filepath="$PROJECT_DIR$/../firefighterbook/.idea/firefighterbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../stjr/.idea/stjr.iml" filepath="$PROJECT_DIR$/../stjr/.idea/stjr.iml" />
+    </modules>
+  </component>
+</project>

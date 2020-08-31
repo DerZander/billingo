@@ -1,0 +1,19 @@
+<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'login' %}"> {% csrf_token %}
+    <div class="input-group input-group-sm mb-2 mr-sm-2 my-2 my-lg-0">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                Username
+            </div>
+        </div>
+        <input type="text" class="form-control form-control-sm" id="inlineFormInputGroupUsername2" name="username" placeholder="Username">
+    </div>
+    <div class="input-group  input-group-sm mb-2 mr-sm-2 my-2 my-lg-0">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                Passwort
+            </div>
+        </div>
+        <input type="password" class="form-control form-control-sm" id="inlineFormInputGroupUsername2" name="password" placeholder="Passwort">
+    </div>
+    <button type="submit" class="btn btn-success btn-sm mb-2 my-2 my-lg-0">Log in</button>
+</form>

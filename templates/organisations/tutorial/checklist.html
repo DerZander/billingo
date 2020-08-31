@@ -1,0 +1,44 @@
+{% load static %}
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a title="Gehe hierfür in auf die Arztseite oder folge dem Link" href="{% url 'users:profile_edit'%}">
+           Profile vervollständigt
+        </a>
+        {% if tasks.profile %}
+            <span class="badge badge-success badge-pill"><img src="{% static 'icons/done-white.svg' %}"></span>
+        {% else %}
+                <span class="badge badge-light badge-pill">nicht erledigt</span>
+        {% endif %}
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a title="Gehe hierfür in auf die Arztseite oder folge dem Link" href="{% url 'recipients:doctor_create' %}">
+           Arzt erstellt
+        </a>
+        {% if tasks.recipients %}
+            <span class="badge badge-success badge-pill"><img src="{% static 'icons/done-white.svg' %}"></span>
+        {% else %}
+                <span class="badge badge-light badge-pill">nicht erledigt</span>
+        {% endif %}
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a title="Gehe hierfür in auf die Rechnungsseite oder folge dem Link" href="{% url 'invoices:invoice_create' %}">
+           Rechnung erstellt
+        </a>
+        {% if tasks.invoice %}
+            <span class="badge badge-success badge-pill"><img src="{% static 'icons/done-white.svg' %}"></span>
+        {% else %}
+                <span class="badge badge-light badge-pill">nicht erledigt</span>
+        {% endif %}
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a title="Gehe hierfür in auf die Rechnungsseite oder folge dem Link" href="{% url 'invoices:invoice_create' %}">
+           erste Anforderung erstellt und abgeschickt
+        </a>
+        {% if tasks.submission %}
+            <span class="badge badge-success badge-pill"><img src="{% static 'icons/done-white.svg' %}"></span>
+        {% else %}
+                <span class="badge badge-light badge-pill">nicht erledigt</span>
+        {% endif %}
+    </li>
+
+</ul>

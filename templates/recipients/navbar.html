@@ -1,0 +1,16 @@
+{% load static %}
+<div class="d-flex justify-content-between">
+    <div class="p-2 bd-highlight">
+        <h2>
+            <a>{{navtitle}}</a>
+            <a class="" href="{% url 'recipients:doctor_create' %}" title="Träger hinzufügen"><img src="{% static 'icons/add_full_circle.svg' %}"></a>
+        </h2>
+    </div>
+    {% if searchform is not Null %}
+    <div class="p-2 bd-highlight">
+        {% include 'recipients/searchform.html' %}
+    </div>
+    {% endif %}
+</div>
+
+

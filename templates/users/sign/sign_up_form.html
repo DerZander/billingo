@@ -1,0 +1,41 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'users/navbar.html' %}
+{% endblock%}
+{% block content%}
+<form method="POST">{% csrf_token %}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
+      </div>
+      {{form.username}}
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Email</span>
+      </div>
+      {{form.email}}
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Passwort</span>
+      </div>
+      {{form.password1}}
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Passwort</span>
+      </div>
+      {{form.password2}}
+    </div>
+
+    <div class="login-div-button">
+      <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+  </form>
+{% endblock %}

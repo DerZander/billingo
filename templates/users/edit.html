@@ -1,0 +1,66 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'users/navbar.html' %}
+{% endblock%}
+{% block content%}
+<form method="POST">{% csrf_token %}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Vorname</span>
+      </div>
+      {{form.first_name}}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Nachname</span>
+      </div>
+      {{form.last_name}}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Geburtstag</span>
+      </div>
+      {{form.birthday}}
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Email</span>
+      </div>
+      {{form.email}}
+    </div>
+
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Straße</span>
+    </div>
+    {{form.street}}
+    </div>
+
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Hausnummer</span>
+    </div>
+    {{form.housenumber}}
+    </div>
+
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">PLZ</span>
+    </div>
+    {{form.postcode}}
+    </div>
+
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Ort</span>
+    </div>
+    {{form.city}}
+    </div>
+     <div class="login-div-button">
+      <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+   </form>
+{% endblock %}

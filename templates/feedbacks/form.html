@@ -1,0 +1,38 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'feedbacks/navbar.html' %}
+{% endblock%}
+{% block content%}
+  <form method="POST" class="doctor-form">{% csrf_token %}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Betreff</span>
+      </div>
+      {{form.title}}
+    </div>
+
+
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">kategorier</span>
+      </div>
+      {{form.type}}
+    </div>
+
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Nachricht</span>
+      </div>
+      {{ form.message}}
+    </div>
+
+    <div class="login-div-button">
+      <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+  </form>
+{% endblock %}

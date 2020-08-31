@@ -1,0 +1,42 @@
+<div class="modal fade" id="modal{{invoice.invoice_doctor.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    {{invoice.invoice_doctor }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-left">
+                    {% if invoice.invoice_doctor.description %}
+                        <h6 class="mb-1">Beschreibung:</h6>
+                        <p class="mb-1">{{invoice.invoice_doctor.description}}</p>
+                    {% endif %}
+                    {% if invoice.invoice_doctor.doctortype %}
+                        <h6 class="mb-1">Spezifikation:</h6>
+                        <p class="mb-1">{{invoice.invoice_doctor.doctortype}}</p>
+                    {% endif %}
+                    {% if invoice.invoice_doctor.street and invoice.invoice_doctor.housenumber and invoice.invoice_doctor.postcode and invoice.invoice_doctor.city %}
+                        <h6 class="mb-1">Adresse:</h6>
+                        <p class="user-select-all mb-1">{{invoice.invoice_doctor.street}} {{invoice.invoice_doctor.housenumber}}, {{invoice.invoice_doctor.postcode}} {{invoice.invoice_doctor.city}}</p>
+                    {% endif %}
+                    {% if invoice.invoice_doctor.iban %}
+                        <h6 class="mb-1">IBAN:</h6>
+                        <p class="user-select-all mb-1">{{invoice.invoice_doctor.iban}}</p>
+                    {% endif %}
+                    {% if invoice.invoice_doctor.phonenumber %}
+                        <h6 class="mb-1">Telefonnummer:</h6>
+                        <p class="user-select-all mb-1">{{invoice.invoice_doctor.phonenumber}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-warning" href="{% url 'recipients:doctor_edit' pk=invoice.invoice_doctor.pk %}">Bearbeiten</a>
+                <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'invoices/navbar.html' %}
+{% endblock%}
+{% block content%}
+  <form method="POST" class="doctor-form">{% csrf_token %}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Rechnungsnummer</span>
+      </div>
+      {{form.invoice_number}}
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Rechnungsdatum</span>
+      </div>
+      {{form.invoice_date}}
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Arzt/Träger</span>
+      </div>
+      {{form.invoice_doctor}}
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Betrag</span>
+      </div>
+      {{form.invoice_amount}}
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Beschreibung</span>
+      </div>
+      {{ form.description}}
+    </div>
+
+    <div class="login-div-button">
+      <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load static %}
+<div class="card-footer">
+    {% if invoice.total_not_paid > 0 or invoice.total_not_submission > 0 %}
+        <a href="{% url 'invoices:invoice_index' %}" role="button" aria-pressed="true" type="button" class="btn btn-info btn-sm">
+            Zu offenen Rechnungen.
+        </a>
+    {% else %}
+        <a type="button" class="btn btn-outline-success" role="button" aria-pressed="true" disabled>
+            Keine offenen Rechnungen vorhanden.
+        </a>
+    {% endif %}
+</div>

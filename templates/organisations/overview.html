@@ -1,0 +1,6 @@
+{% load static %}
+<div class="d-flex justify-content-around">
+{% for invoice in invoices %}
+    {% include 'organisations/overview/card-body.html' %}
+{% endfor %}
+</div>

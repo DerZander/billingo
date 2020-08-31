@@ -1,0 +1,38 @@
+{% load static %}
+<div class="d-flex justify-content-between">
+    <div class="p-2 bd-highlight">
+        <h4 class="card-title mb-0">
+            {% if recipient.user.id != user.id%}
+                {% if user.is_superuser %}
+                    <img src="{% static 'icons/community.svg' %}" title="aus der Community | {{ recipient.user }}">
+                {% else %}
+                    <img src="{% static 'icons/community.svg' %}" title="aus der Community">
+                {% endif %}
+            {% endif %}
+            <a class="align-bottom">{{recipient.name}}</a>
+            {% if recipient.user.id != user.id %}
+                <a class="align-bottom" href="{% url 'recipients:doctor_user_favorit' recipient=recipient.id %}">
+                    {% if recipient.id in recipientfavorit %}
+                        <img src="{% static 'icons/star.svg' %}">
+                    {% else %}
+                        <img src="{% static 'icons/unstar.svg' %}">
+                    {% endif %}
+                </a>
+            {% endif %}
+        </h4>
+    </div>
+    <div class="p-2 bd-highlight">
+        {% if recipient.user == user or request.user.is_superuser%}
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'icons/option.svg' %}">
+                </button>
+                <div class="dropdown-menu">
+                    <h6 class="dropdown-header">Optionen</h6>
+                    <a class="dropdown-item" href="{% url 'recipients:doctor_edit' pk=recipient.pk %}"><img src="{% static 'icons/edit.svg' %}"> Bearbeiten</a>
+                    <a class="dropdown-item" href="{% url 'recipients:doctor_delete' pk=recipient.pk %}"><img src="{% static 'icons/delete.svg' %}"> Löschen</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

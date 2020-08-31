@@ -1,0 +1,49 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'overview' %}" title="billingo, das Rechnungstool">Billingo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+{% if user.is_authenticated %}
+
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <a class="nav-item nav-link" href="{% url 'overview' %}"><img src="{% static 'icons/home-white.svg' %}"> Startseite</a>
+            <a class="nav-item nav-link" href="{% url 'recipients:doctor_index' %}"><img src="{% static 'icons/person_white.svg' %}"> Träger</a>
+            <a class="nav-item nav-link" href="{% url 'invoices:invoice_index' %}"><img src="{% static 'icons/article-white.svg' %}"> Rechnungen</a>
+            <a class="nav-item nav-link" href="{% url 'submissions:submissions_index' %}"><img src="{% static 'icons/mailing-white.svg' %}"> Anforderungen</a>
+        </div>
+        <div class="navbar-nav my-2 my-lg-0">
+
+            <div class="nav-item dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuReference">
+                    <h6 class="dropdown-header">Mein Profil</h6>
+                    <a class="dropdown-item" href="{% url 'users:profile_show'%}">Ansehen</a>
+                    <a class="dropdown-item" href="{% url 'users:profile_edit'%}">Bearbeiten</a>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Sonstiges</h6>
+                    <a class="dropdown-item" href="{% url 'organisations:feedback_create' %}">Feedback erstellen</a>
+                    <div class="dropdown-divider"></div>
+                    {% if request.user.is_superuser %}
+                        <h6 class="dropdown-header">Admin</h6>
+                        <a class="dropdown-item" href="/admin">Adminseite</a>
+                        <a class="dropdown-item" href="/feedback">Feedback</a>
+                        <a class="dropdown-item" href="{#% url 'recipients:type_import' %#}">Spezifikation Import</a>
+                        <div class="dropdown-divider"></div>
+                    {% endif %}
+                    <a class="dropdown-item" href="{% url 'logout' %}">Abmelden</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <div class="navbar-nav my-2 my-lg-0 ml-auto">
+        {% include 'users/sign/sign_in_form.html' %}
+    </div>
+{% endif %}
+    </div>
+</nav>

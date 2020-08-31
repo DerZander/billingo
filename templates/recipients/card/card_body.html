@@ -1,0 +1,23 @@
+{% load static %}
+<div class="text-left">
+    {% if recipient.description %}
+        <h6 class="mb-1">Beschreibung:</h6>
+        <p class="mb-1">{{recipient.description}}</p>
+    {% endif %}
+    {% if recipient.recipienttype %}
+        <h6 class="mb-1">Spezifikation:</h6>
+        <p class="mb-1">{{recipient.recipienttype}}</p>
+    {% endif %}
+    {% if recipient.street and recipient.housenumber and recipient.postcode and recipient.city %}
+        <h6 class="mb-1">Adresse:</h6>
+        <p class="user-select-all mb-1">{{recipient.street}} {{recipient.housenumber}}, {{recipient.postcode}} {{recipient.city}}</p>
+    {% endif %}
+    {% if recipient.iban %}
+        <h6 class="mb-1">IBAN:</h6>
+        <p class="user-select-all mb-1">{{recipient.iban}}</p>
+    {% endif %}
+    {% if recipient.phonenumber %}
+        <h6 class="mb-1">Telefonnummer:</h6>
+        <p class="user-select-all mb-1">{{recipient.phonenumber}}</p>
+    {% endif %}
+</div>

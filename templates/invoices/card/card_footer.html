@@ -1,0 +1,31 @@
+{% load static %}
+{% if invoice.paid_date != None and invoice.submission != Null %}
+    <a type="button" class="btn btn-outline-success disabled">Bereits bezahlt</a>
+{% elif invoice.paid_date != None and invoice.submission == Null %}
+    <a class="btn btn-info btn-sm" href="{% url 'invoices:invoice_paid' pk=invoice.id demands="true" %}" role="button">Rechnung anfordern</a>
+{% else %}
+    <div class="row">
+        <div class="col">
+             <div class="btn-group">
+                <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Rechnung bezahlen
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'invoices:invoice_paid' pk=invoice.id demands="true" %}">Bezahlen und Anfordern</a>
+                    <a class="dropdown-item" href="{% url 'invoices:invoice_paid' pk=invoice.id demands="false" %}">Nur Bezahlen</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'icons/option.svg' %}">
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'invoices:invoice_edit' pk=invoice.pk %}"><img src="{% static 'icons/edit.svg' %}"> Bearbeiten</a>
+                <a class="dropdown-item" href="{% url 'invoices:invoice_delete' pk=invoice.pk %}"><img src="{% static 'icons/delete.svg' %}"> Löschen</a>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

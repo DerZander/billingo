@@ -1,0 +1,51 @@
+{% load static %}
+<div class="p-2 bd-highlight">
+    <div class="card text-center shadow-sm mb-2 bg-white rounded">
+        {% include './card-header.html' %}
+        <div class="card-body text-left">
+            <h6 class="card-subtitle mb-2 text-muted">Übersicht aller Rechnungen dieses Monats:</h6>
+            <div class="d-flex justify-content-between mb-3">
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-danger  btn-block" title="Link noch nicht verfügbar...">
+                        Nicht bezahlt<span class="badge badge-light btn-lg btn-block">{{invoice.total_not_paid}}</span>
+                    </button>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-warning  btn-block" title="Link noch nicht verfügbar...">
+                        Bezahlt, aber nicht angefordert<span class="badge badge-light btn-lg btn-block">{{invoice.total_not_submission}}</span>
+                    </button>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-success  btn-block" title="Link noch nicht verfügbar...">
+                        Bezahlt und angefordert<span class="badge badge-light btn-lg btn-block">{{invoice.total_complete}}</span>
+                    </button>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-primary btn-block" title="Link noch nicht verfügbar..">
+                        Insgesamt <span class="badge badge-light btn-lg btn-block">{{invoice.total}}</span>
+                    </button>
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-muted">Übersicht aller Beträge dieser Rechnungen:</h6>
+            <div class="progress" style="height: 25px;">
+                {% if invoice.total_amount_not_paid > 0 %}
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: {{ invoice.total_amount_percent_not_paid }}%" aria-valuenow="{{ invoice.total_amount_percent_not_paid }}" aria-valuemin="0" aria-valuemax="100" title="{{ invoice.total_amount_not_paid }} €">
+                      -{{ invoice.total_amount_not_paid }} €
+                  </div>
+                {% endif %}
+            {% if invoice.total_amount_paid > 0 %}
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: {{ invoice.total_amount_percent_paid }}%" aria-valuenow="{{ invoice.total_amount_percent_paid }}" aria-valuemin="0" aria-valuemax="100" title="{{ invoice.total_amount_paid }} €">
+                     +{{ invoice.total_amount_paid }} €
+                  </div>
+                {% endif %}
+            {% if invoice.total_amount_submission > 0 %}
+                  <div class="progress-bar bg-success" role="progressbar" style="width: {{ invoice.total_amount_percent_submission }}%" aria-valuenow="{{ invoice.total_amount_percent_submission }}" aria-valuemin="0" aria-valuemax="100" title="{{ invoice.total_amount_submission }} €">
+                     {{ invoice.total_amount_submission }} €
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+        {% include './card-footer.html' %}
+    </div>
+</div>
+

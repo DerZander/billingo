@@ -1,0 +1,25 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    <div class="d-flex justify-content-between">
+        <div class="p-2 bd-highlight">
+            <h2>
+                <a>{{navtitle}}</a>
+            </h2>
+        </div>
+    </div>
+{% endblock%}
+{% block content%}
+  <form method="POST" class="doctor-form">{% csrf_token %}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Datei</span>
+      </div>
+      {{form.file}}
+    </div>
+
+    <div class="login-div-button">
+      <input type="submit" value="Speichern" name="save" id="save" class="btn btn-success login-button"/>
+    </div>
+  </form>
+{% endblock %}>

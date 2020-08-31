@@ -1,0 +1,9 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'newsletter/../organisations/navbar.html' %}
+{% endblock %}
+{% block content %}
+    {{ user.birthday }}
+
+{% endblock %}

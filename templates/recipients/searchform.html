@@ -1,0 +1,12 @@
+{% load static %}
+<form class="form-inline">
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Trägername: </label>
+    {{ searchform.recipient_name }}
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Spezifikation: </label>
+    {{ searchform.recipients_type }}
+    <div class="custom-control custom-switch mr-sm-2 ">
+        {{ searchform.favorit }}
+        <label class="custom-control-label" for="customSwitch1">Meine Träger</label>
+    </div>
+    <button type="submit" class="btn btn-info my-1"><img src="{% static 'icons/search-white.svg' %}"></button>
+</form>
